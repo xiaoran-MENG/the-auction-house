@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:context=".presentation.components.auctions.bidding.BiddingFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/bidding_auction_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center"
+                android:text="Auction title"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/primary"
+                android:textSize="36sp"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/bidding_auction_product"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginVertical="6dp"
+                android:ellipsize="end"
+                android:fontFamily="sans-serif"
+                android:text="2x set of Scholastic drawing pens of varying colors"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+                android:textStyle="italic" />
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardCornerRadius="12dp">
+
+                <ImageView
+                    android:id="@+id/bidding_auction_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:layout_marginVertical="12dp"
+                    android:src="@drawable/item_default_img_foreground" />
+
+            </androidx.cardview.widget.CardView>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/description_tag"
+                    android:textColor="@color/black"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:id="@+id/biddingUserRating"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="No Rating"
+                    android:textAlignment="center"
+                    android:textSize="24sp"
+                    app:layout_constraintBottom_toBottomOf="@+id/public_profile_username"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.517"
+                    app:layout_constraintStart_toEndOf="@+id/public_profile_username"
+                    app:layout_constraintTop_toTopOf="@+id/public_profile_username" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/bidding_auction_description"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/rectangle"
+                android:fontFamily="@font/aubrey"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. "
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="26sp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/bidding_auction_posted"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/aubrey"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:text="Date Posted: 2023/01/19"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/bidding_auction_expiry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.5"
+                    android:fontFamily="@font/aubrey"
+                    android:gravity="center"
+                    android:padding="6dp"
+                    android:text="Expiry: 2023/02/19"
+                    android:textColor="@color/deep_red"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/bidding_auction_highest_bid"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center"
+                android:paddingTop="6dp"
+                android:text="Current Highest Bid: $0.00"
+                android:textAllCaps="true"
+                android:textColor="@color/primary"
+                android:textSize="20sp"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/bidding_auction_categories"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Categories:"
+                android:layout_marginTop="6dp"
+                android:textSize="18sp"
+                android:scrollHorizontally="true"
+                android:textColor="@color/black"
+                />
+        </LinearLayout>
+
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
+            android:id="@+id/bidding_place_my_bid_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="6dp"
+                android:fontFamily="sans-serif-smallcaps"
+                android:gravity="center"
+                android:text="@string/place_big_title_tag"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/primary"
+                android:textSize="36sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <EditText
+                    android:id="@+id/bidding_place_bid_amt"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:gravity="center"
+                    android:hint="@string/bid_edittext_hint"
+                    android:inputType="numberDecimal" />
+
+                <Button
+                    android:id="@+id/bidding_place_bid_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="20dp"
+                    android:backgroundTint="@color/primary"
+                    android:text="@string/Bid_button"
+                    android:textColor="@color/secondary"
+                    android:textSize="20sp"
+                    android:textAllCaps="true"
+                    android:textStyle="bold"
+                    style="@style/Widget.Material3.Button.IconButton.Filled" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</ScrollView>

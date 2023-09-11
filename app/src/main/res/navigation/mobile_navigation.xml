@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_home_fragment">
+
+    <fragment
+        android:id="@+id/navigation_home_fragment"
+        android:name="comp3350.group9.theauctionhouse.presentation.components.home.HomeFragment"
+        android:label="@string/nav_title_home"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_public_profile_from_home"
+            app:destination="@id/public_profile"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out">
+            <argument
+                android:name="publicUserId"
+                app:argType="string"
+                app:nullable="false" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_auctionlist_fragment"
+        android:name="comp3350.group9.theauctionhouse.presentation.components.auctions.AuctionListFragment"
+        android:label="@string/nav_title_auction"
+        tools:layout="@layout/fragment_auctions_list">
+        <action
+            android:id="@+id/action_bidding_from_auction_list"
+            app:destination="@id/navigation_bidding_fragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out">
+            <argument
+                android:name="AuctionId"
+                app:argType="string"
+                app:nullable="false" />
+        </action>
+        <action
+            android:id="@+id/action_public_profile_from_auction_list"
+            app:destination="@id/public_profile"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out">
+            <argument
+                android:name="publicUserId"
+                app:argType="string"
+                app:nullable="false" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_bidding_fragment"
+        android:name="comp3350.group9.theauctionhouse.presentation.components.auctions.bidding.BiddingFragment"
+        android:label="@string/nav_bidding"
+        tools:layout="@layout/fragment_bidding"></fragment>
+
+    <fragment
+        android:id="@+id/navigation_profile_fragment"
+        android:name="comp3350.group9.theauctionhouse.presentation.components.profile.ProfileFragment"
+        android:label="@string/nav_title_profile"
+        tools:layout="@layout/fragment_profile">
+        <action
+            android:id="@+id/action_navigation_profile_to_bidding_history"
+            app:destination="@id/navigation_bidding_history_fragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+        <action
+            android:id="@+id/action_navigation_profile_to_auction_history"
+            app:destination="@+id/navigation_auction_history_fragment"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/slide_in"
+            app:popExitAnim="@anim/slide_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_bidding_history_fragment"
+        android:name="comp3350.group9.theauctionhouse.presentation.components.profile.history.BiddingHistoryFragment"
+        android:label="@string/fragment_bidding_history"
+        tools:layout="@layout/general_recycle_view" >
+        <action
+            android:id="@+id/action_bidding_history_recycle_view_to_navigation_bidding"
+            app:destination="@id/navigation_bidding_fragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_auction_history_fragment"
+        android:name="comp3350.group9.theauctionhouse.presentation.components.profile.history.AuctionHistoryFragment"
+        android:label="@string/fragment_auction_history"
+        tools:layout="@layout/general_recycle_view" />
+    <fragment
+        android:id="@+id/public_profile"
+
+        android:name="comp3350.group9.theauctionhouse.presentation.components.publicProfile.PublicProfileFragment"
+        android:label="@string/public_profile_label"
+        tools:layout="@layout/general_recycle_view">
+        <action
+            android:id="@+id/action_public_profile_to_navigation_bidding"
+            app:destination="@id/navigation_bidding_fragment"
+            app:enterAnim="@anim/fade_in"
+            app:exitAnim="@anim/fade_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/fade_out"/>
+    </fragment>
+</navigation>

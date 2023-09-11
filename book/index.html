@@ -1,0 +1,252 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Objective</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="favicon.svg">
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Introduction</li><li class="chapter-item expanded "><a href="intro/vision_statement.html" class="active"><strong aria-hidden="true">1.</strong> Objective</a></li><li class="chapter-item expanded affix "><li class="part-title">In Action</li><li class="chapter-item expanded "><a href="usage/video.html"><strong aria-hidden="true">2.</strong> Video</a></li><li class="chapter-item expanded affix "><li class="part-title">A Postmortem</li><li class="chapter-item expanded "><a href="discussion/good.html"><strong aria-hidden="true">3.</strong> Architecture</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="misc/contributors.html">Contributors</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="objective"><a class="header" href="#objective">Objective</a></h1>
+<p>We set out to create an app which allows users to host and bid on auctions in their vicinity. We've primarily targeted this application for University Students to help make the university experience easier by allowing students and faculty to buy or sell their, books, computers, furniture, etc.</p>
+<h1 id="vision-statement"><a class="header" href="#vision-statement">Vision Statement</a></h1>
+<p>The best place to auction and bid on any university-related items for students.</p>
+<p>The Auction House is primarily designed for university students. The system allows users to auction and bid on textbooks as well as other student commodities. With our auctioning system, users can always offer what they feel is an appropriate price for textbooks or other student goods.</p>
+<p>The ability to easily buy and sell second-hand goods is an important part of the student community. Considering students are often on a tight budget, this allows them to buy textbooks and other commodities for a cheaper price. Since students move between cities, for co-op or graduation, it also allows them to sell off items they cannot travel with. Having a localized market for these transactions within the university allows students to easily participate. There will be little commute required for students who are living on campus and the market would be specific to the items students are interested in.</p>
+<p>Furthermore, local auctioning is a service that has yet to be provided. Currently, students use Facebook Marketplace for their buying or selling. Although this does allow for general transactions to take place, it does not offer users to host online auctions, and is not optimised for students’ use case. Our system will fulfill this role in the university market.</p>
+<p>Since our users are students, the system will require that our users sign up using student emails. This means all of the users will be identified and are guaranteed to be your fellow students. With identification, the system can provide a more secure and safe environment for third party exchange of goods.</p>
+<p>As additional security measures, users are kept protected by our reporting and trust factor systems. These systems guarantee that troublemakers can be banned, and users can be informed about the trustworthiness of others before meeting them to exchange goods. In addition to these security measures, the system will encourage users to meet in public areas such as the university centre and other on-campus areas.</p>
+<p>This system is a greatly improved environment compared to other currently used third party marketplaces as we offer more tailored features for university students. As a result, students who need to auction away textbooks have a focused and efficient interface as well as the benefit of not competing in a marketplace filled with a variety of goods.</p>
+<p>The success of the system would be tracked based on an increase of atleast 10% more transactions per semester. An increase in the average number of transactions per semester would give a measurable value of how many more students are willing to use our system and our possible growth. In addition to this, if the app is published through a 3rd party platform such as the Play Store, success will be measured having a rating of 4 stars. Also, through our trust factor system, we can measure the security and safety of our marketplace. Having 90% of our users have a trust score of 4 out of 5 stars is part of our success criteria. </p>
+<h1 id="key-features"><a class="header" href="#key-features">Key Features</a></h1>
+<p>A key highlight of some of our major features:</p>
+<ul>
+<li>
+<p>Authenticated user sign in</p>
+<ul>
+<li>Users will have their own personal account which will track their auctions and bids</li>
+<li>System will ensure that only students with a valid umanitoba email address can log in</li>
+</ul>
+</li>
+<li>
+<p>Host and bid on auctions</p>
+<ul>
+<li>Users can quickly create and auctions with the name and details of whatever they're selling</li>
+<li>Users can bid on a particular auction with the click of a few buttons</li>
+</ul>
+</li>
+<li>
+<p>Record Keeping</p>
+<ul>
+<li>Everyone will be able to view what auctions they've bid on and what auctions they've hosted</li>
+<li>Users can see a list of users and their bids under each auction</li>
+<li>Users can visit other profiles to see a list of auctions they're holding</li>
+</ul>
+</li>
+<li>
+<p>A Trust Factor System</p>
+<ul>
+<li>The trust factor system will track which users tend to be more trustworthy on the app. It also allows us to ban users who appear to have a pattern on bad ratings on their app</li>
+<li>Since the user accounts are linked with a umanitoba account, it helps create a safe and transparent environment for both buyers and sellers</li>
+</ul>
+</li>
+</ul>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+
+                            <a rel="next" href="usage/video.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+
+                    <a rel="next" href="usage/video.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="elasticlunr.min.js"></script>
+        <script src="mark.min.js"></script>
+        <script src="searcher.js"></script>
+
+        <script src="clipboard.min.js"></script>
+        <script src="highlight.js"></script>
+        <script src="book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

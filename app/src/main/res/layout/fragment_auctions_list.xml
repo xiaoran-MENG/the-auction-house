@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:orientation="vertical"
+    tools:context=".presentation.components.auctions.AuctionListFragment">
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/auctions_recycler_view"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:cacheColorHint="#00000000"
+        android:layoutAnimation="@anim/list_layout_fall_down"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <TextView
+        android:id="@+id/auctions_list_no_data"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="NO DATA"
+        android:textAlignment="center"
+        android:textAppearance="?android:textAppearanceMedium"
+        android:textColor="@color/black"
+        android:visibility="invisible" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/auctions_list_add_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="25dp"
+        android:backgroundTint="@color/primary"
+        android:clickable="true"
+        android:contentDescription="Add Auction Button"
+        android:focusable="true"
+        android:src="@drawable/ic_plus_symbol"
+        app:fabCustomSize="100dp"
+        app:maxImageSize="50dp"
+        app:tint="@color/white" />
+</RelativeLayout>

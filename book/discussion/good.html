@@ -1,0 +1,264 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js light">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Architecture</title>
+
+
+        <!-- Custom HTML head -->
+        
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="icon" href="../favicon.svg">
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link rel="stylesheet" href="../fonts/fonts.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body>
+    <div id="body-container">
+        <!-- Provide site root to javascript -->
+        <script>
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "navy" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            var html = document.querySelector('html');
+            html.classList.remove('no-js')
+            html.classList.remove('light')
+            html.classList.add(theme);
+            html.classList.add('js');
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            var html = document.querySelector('html');
+            var sidebar = null;
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><li class="part-title">Introduction</li><li class="chapter-item expanded "><a href="../intro/vision_statement.html"><strong aria-hidden="true">1.</strong> Objective</a></li><li class="chapter-item expanded affix "><li class="part-title">In Action</li><li class="chapter-item expanded "><a href="../usage/video.html"><strong aria-hidden="true">2.</strong> Video</a></li><li class="chapter-item expanded affix "><li class="part-title">A Postmortem</li><li class="chapter-item expanded "><a href="../discussion/good.html" class="active"><strong aria-hidden="true">3.</strong> Architecture</a></li><li class="spacer"></li><li class="chapter-item expanded affix "><a href="../misc/contributors.html">Contributors</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar-hover-placeholder"></div>
+                <div id="menu-bar" class="menu-bar sticky bordered">
+                    <div class="left-buttons">
+                        <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                            <i class="fa fa-paint-brush"></i>
+                        </button>
+                        <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="light">Light</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                        </ul>
+                        <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title"></h1>
+
+                    <div class="right-buttons">
+                        <a href="../print.html" title="Print this book" aria-label="Print this book">
+                            <i id="print-button" class="fa fa-print"></i>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="architecture"><a class="header" href="#architecture">Architecture</a></h1>
+<h1 id="the-auction-house-iteration-2"><a class="header" href="#the-auction-house-iteration-2">The Auction House (Iteration 2)</a></h1>
+<h2 id="architecture-1"><a class="header" href="#architecture-1">Architecture</a></h2>
+<p><img src="arch_final.png" alt="" /></p>
+<h3 id="core"><a class="header" href="#core">Core</a></h3>
+<p>This layer contains enterprise logics that are foundational to the application. It has no dependencies, and every other external layer depends on it. This honors the Dependency Inversion Principle (DIP) and ensures that the domain is loosely coupled to the external layers that are more subject to frequent changes.</p>
+<p><code>application</code>: interfaces to be realized by external layers, such as query engine, and to be dependency-injected in the business layer</p>
+<p><code>domain</code>: entities that capture the all important domain logics</p>
+<h3 id="presentation"><a class="header" href="#presentation">Presentation</a></h3>
+<p>This layer contains interactive pages for welcome, registration, login, profile, catalog, auctioning, bidding, and reporting. It gracefully handles exceptions and returns user-friendly results.</p>
+<p><code>account</code>: registration and login UI</p>
+<p><code>home</code>: welcome UI</p>
+<p><code>profile</code>: user info UI</p>
+<p><code>auction</code>: catalog and auctioning</p>
+<p><code>bidding</code>: bidding and bid history</p>
+<h3 id="business"><a class="header" href="#business">Business</a></h3>
+<p>This layer is vertially sliced into 4 major use cases, including catalog, auction, bidding, and account. Each slice contains its own services and DTOs to model a particular use case. This honors the single responsibility principle and promotes high cohesion within each use case boundary. Cross-boundary concerns are placed under common and exception.</p>
+<p><code>account</code>: registration and login</p>
+<p><code>catalog</code>: auctions listing for new users and sellers</p>
+<p><code>bidding</code>: bidding and bid history</p>
+<p><code>auction</code>: auctioning</p>
+<p><code>common</code>: cross-boundary concerns</p>
+<p><code>exception</code>: customized exception</p>
+<h3 id="persistence"><a class="header" href="#persistence">Persistence</a></h3>
+<p>This layer contains 2 versions of query engine to execute SQL-based CRUD operations against a relational database. One is the stub used in testing. The other is connected to HSQLDB database to be used in development and production. </p>
+<p><code>queryEngines</code>: implementations of the <code>Queriable</code> interaface in <code>application</code> to be used in <code>Database</code> that interacts with the HSQLDB instance</p>
+<h1 id="what-weve-learned"><a class="header" href="#what-weve-learned">What we've learned</a></h1>
+<h2 id="what-worked"><a class="header" href="#what-worked">What worked</a></h2>
+<ul>
+<li>Our team was able to complete the majority of the development tasks, especially the ones required to create a &quot;MVP&quot; </li>
+<li>The project vision is satisfied and our user stories are largely completed </li>
+<li>We had enough technical expertise to execute on our ideas, and we never had to remove a feature due to technical requirements </li>
+<li>We're proud of how the UI turned out, it is clean while also being functional and allows users to access any part of the application with very few inputs</li>
+</ul>
+<h2 id="what-didnt-work"><a class="header" href="#what-didnt-work">What didn't work</a></h2>
+<ul>
+<li>The project velocity graph shows a trend of over-commiting, because we commited than we could complete in time </li>
+<li>We had to refactor the code, which caused difficulty when we had to merge changes from older branches </li>
+</ul>
+<h2 id="what-wed-do-differently"><a class="header" href="#what-wed-do-differently">What we'd do differently</a></h2>
+<ul>
+<li>Wait for all branches to be merged before we attempt to refactor code </li>
+<li>Commit to less work </li>
+<li>Plan out the architecture in agreement before we start each iteration </li>
+</ul>
+<h1 id="project-size"><a class="header" href="#project-size">Project size</a></h1>
+<p>According to our calculations, this project was composed of 72 <code>.java</code> classes. Our total lines of code, not including empty spaces is 4465. </p>
+<h3 id="below-is-a-bar-graph-which-highligths-the-largest-java-files-by-lines-of-code"><a class="header" href="#below-is-a-bar-graph-which-highligths-the-largest-java-files-by-lines-of-code">Below is a bar graph which highligths the largest <code>.java</code> files by lines of code</a></h3>
+<p><img src="code-analysis.jpg" alt="code-graph" /></p>
+<p>Although the AuctionQueryExecutor, and other QueryExecutor type objects are the largest in the project they did not take the most amount of time to complete. The most time consuming parts of the project were related to the UI.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../usage/video.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="../misc/contributors.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../usage/video.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a rel="next" href="../misc/contributors.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+        <!-- Livereload script (if served using the cli tool) -->
+        <script>
+            const wsProtocol = location.protocol === 'https:' ? 'wss:' : 'ws:';
+            const wsAddress = wsProtocol + "//" + location.host + "/" + "__livereload";
+            const socket = new WebSocket(wsAddress);
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
+
+
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+
+        <script src="../elasticlunr.min.js"></script>
+        <script src="../mark.min.js"></script>
+        <script src="../searcher.js"></script>
+
+        <script src="../clipboard.min.js"></script>
+        <script src="../highlight.js"></script>
+        <script src="../book.js"></script>
+
+        <!-- Custom JS scripts -->
+
+
+    </div>
+    </body>
+</html>

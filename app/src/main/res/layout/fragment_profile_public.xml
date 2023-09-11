@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.components.publicProfile.PublicProfileFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!-- User Profile Picture -->
+        <TextView
+            android:id="@+id/publicProfileUserRating"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No rating"
+            app:layout_constraintBottom_toBottomOf="@+id/public_profile_username"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/public_profile_username"
+            app:layout_constraintTop_toTopOf="@+id/public_profile_username" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/profile_image_card"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="@color/secondary"
+            android:elevation="10dp"
+            app:cardCornerRadius="100dp"
+            app:layout_constraintBottom_toTopOf="@+id/public_profile_username"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/profile_image"
+                android:layout_width="200dp"
+                android:layout_height="200dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_user"
+                app:tint="@color/white" />
+        </androidx.cardview.widget.CardView>
+
+        <!-- Username Label -->
+        <TextView
+            android:id="@+id/public_profile_username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif-smallcaps"
+            android:text="Username"
+            android:textColor="@color/primary"
+            android:textSize="40sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_image_card" />
+
+        <!-- email Label -->
+        <TextView
+            android:id="@+id/public_profile_email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginVertical="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="Email"
+            android:textColor="@color/primary"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/public_profile_username" />
+
+        <!-- buttons -->
+        <LinearLayout
+            android:id="@+id/btn_layout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/public_profile_email">
+
+            <Button
+                android:id="@+id/public_profile_report_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:backgroundTint="@color/deep_red"
+                android:drawableRight="@drawable/ic_error"
+                android:drawableTint="@color/white"
+                android:paddingHorizontal="12dp"
+                android:text="Report"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/public_profile_rate_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="12dp"
+                android:backgroundTint="@color/sky_blue"
+                android:drawableRight="@drawable/ic_star"
+                android:drawableTint="@color/white"
+                android:paddingHorizontal="12dp"
+                android:text="Rate"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- recent auctions list -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="400dp"
+            android:orientation="vertical"
+            android:paddingVertical="12dp"
+
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btn_layout">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:text="Recent Auctions"
+                android:textColor="@color/primary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/public_profile_recent_auctions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:numColumns="1"
+                android:paddingHorizontal="22dp"
+                android:scrollbars="vertical"
+                android:verticalSpacing="16dp" />
+        </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

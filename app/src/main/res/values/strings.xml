@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">The Auction House</string>
+    <string name="unknown_question_marks">\???</string>
+
+    <!--  Account Activities  -->
+    <string name="title_activity_registration">Registration</string>
+    <string name="prompt_username">Username</string>
+    <string name="prompt_email">School Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="remember_me">Remember me</string>
+    <string name="action_sign_in_short">OK</string>
+    <string name="action_sign_in">Login</string>
+    <string name="registration_hint"><u>No account? Create a new one!</u></string>
+    <string name="action_register">Register</string>
+
+    <!--  Nav bar  -->
+    <string name="title_activity_base">BaseActivity</string>
+    <string name="nav_title_home">Home</string>
+    <string name="nav_title_profile">Profile</string>
+
+    <!--  profile  -->
+    <string name="button_logout">Logout</string>
+    <string name="nav_title_auction">Auction</string>
+    <string name="nav_bidding">Bid</string>
+    <string name="description_tag">Description:</string>
+    <string name="place_big_title_tag">Place my bid:</string>
+    <string name="bid_edittext_hint">INSERT BID AMOUNT</string>
+    <string name="Bid_button">bid</string>
+    <string name="fragment_bidding_history">Bidding History</string>
+    <string name="fragment_auction_history">Auction History</string>
+    <string name="public_profile_label">User Profile</string>
+
+</resources>

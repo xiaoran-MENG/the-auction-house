@@ -1,6 +1,6 @@
 ### The Auction House
 
-#### This is for the good memory of learning code in college
+_For the good memory of learning code in college_
 
 #### Purpose
 The Auction House is designed for university students to auction and bid on textbooks as well as other student commodities. With our auctioning system, users can always offer what they feel is an appropriate price for textbooks or other student goods.
